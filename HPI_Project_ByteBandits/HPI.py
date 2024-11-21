@@ -27,7 +27,7 @@ def get_mood_palette(mood):
         'confident': (['#800080', '#4B0082', '#9932CC'], 'triangle', "You're unstoppable! Keep conquering your goals."),
         'anxious': (['#808080', '#A9A9A9', '#696969'], 'rectangle', "Take a deep breath, you're stronger than you think.")
     }
-    # Return None if the mood is not recognized
+    # Return None if the mood is not recognized, put mood input string in only lower case
     return palettes.get(mood.lower(), None)
 
 def draw_mood_art(mood):
@@ -52,7 +52,7 @@ def draw_mood_art(mood):
     colors, shape_type, message = mood_data
 
     # Create a blank canvas
-    fig, ax = plt.subplots(figsize=(6, 6))
+    fig, ax = plt.subplots(figsize=(6, 6)) # size of figure: 6 x 6 inches
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.axis('off')  # Hide axes for a clean look
@@ -82,7 +82,7 @@ def draw_mood_art(mood):
             ax.add_patch(triangle)
 
     # Add the motivational message at the center of the canvas
-    ax.text(0.5, 0.5, message, fontsize=14, color="black", ha='center', va='center', wrap=True, bbox=dict(facecolor='white', alpha=0.8))
+    ax.text(0.5, 0.5, message, fontsize=14, color="black", ha='center', va='center', wrap=True, bbox=dict(facecolor='white', alpha=0.8)) 
 
     # Display the mood art
     plt.title(f"Mood Art: {mood.capitalize()}", fontsize=16, pad=20)
